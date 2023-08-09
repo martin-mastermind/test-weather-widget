@@ -10,8 +10,12 @@ import { useSettingsToggler } from './composables/useSettingsToggler';
 
 import WeatherScreen from './components/WeatherScreen.vue';
 import SettingsScreen from './components/SettingsScreen.vue';
+import { useWeathers } from './composables/useWeathers';
 
 const settingsToggler = useSettingsToggler();
+const weathers = useWeathers();
+
+settingsToggler.set(weathers.isEmpty.value)
 </script>
 
 <style lang="scss">
@@ -28,7 +32,8 @@ weather-widget {
 
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 
-  width: 320px;
+  width: 20rem;
+  max-width: 320px;
 }
 
 .weather__widget {

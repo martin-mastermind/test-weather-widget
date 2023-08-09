@@ -1,4 +1,4 @@
-import { ref, watch } from "vue";
+import { computed, ref, watch } from "vue";
 
 const state = ref<string[]>([]);
 
@@ -22,6 +22,8 @@ export function useWeathers() {
     deep: true
   });
 
+  const isEmpty = computed(() => state.value.length === 0);
+
   function add(value: string) {
     if (state.value.includes(value)) {
       alert('This location is already in list.');
@@ -37,6 +39,7 @@ export function useWeathers() {
 
   return {
     state,
+    isEmpty,
     add,
     remove
   }

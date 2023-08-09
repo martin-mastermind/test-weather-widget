@@ -27,10 +27,16 @@ const weathers = useWeathers();
 <style lang="scss" scoped>
 .weathers {
   padding: .5rem;
+  position: relative;
+
+  min-height: 10rem;
 
   &__header {
     display: flex;
     justify-content: flex-end;
+
+    position: absolute;
+    right: .5rem;
 
     &-cog {
       cursor: pointer;

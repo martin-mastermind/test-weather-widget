@@ -3,6 +3,7 @@
     <header class="settings__header">
       <h2 class="settings__header-title">Settings</h2>
       <img
+        v-if="!weathers.isEmpty.value"
         class="settings__header-close"
         src="../assets/close.svg"
         alt="Close"
@@ -10,6 +11,7 @@
       />
     </header>
     <draggable
+      v-if="!weathers.isEmpty.value"
       v-model="weathers.state.value"
       tag="article"
       class="settings__body"
@@ -70,6 +72,9 @@ function triggerAdd() {
 .settings {
   padding: .5rem;
 
+  display: flex;
+  flex-direction: column;
+
   &__header {
     display: flex;
     justify-content: space-between;
@@ -85,7 +90,7 @@ function triggerAdd() {
     flex-direction: column;
     gap: .5rem;
 
-    margin: .5rem 0 1.5rem;
+    margin-top: .5rem;
   }
 
   &__footer {
@@ -94,6 +99,8 @@ function triggerAdd() {
     align-items: flex-end;
 
     gap: .5rem;
+
+    margin-top: 1.5rem;
 
     &-field {
       width: 100%;

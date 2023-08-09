@@ -6,12 +6,29 @@
         class="settings__header-close"
         src="../assets/close.svg"
         alt="Close"
-        @click="$emit('switch')"
+        @click="settingsToggler.set(false)"
       />
     </header>
-    <article class="settings__body">
-      <SettingsItem v-for="item of items" :key="item" :item="item" />
-    </article>
+    <draggable
+      v-model="weathers.state.value"
+      tag="article"
+      class="settings__body"
+      handle=".setting-replace__icon"
+    >
+      <template #item="{ element: item, index }">
+        <SettingsItem 
+          :key="item"
+          :item="item"
+          @remove="weathers.remove(index)"
+        />
+      </template>
+      <SettingsItem 
+        v-for="(item, i) of weathers.state.value"
+        :key="item"
+        :item="item"
+        @remove="weathers.remove(i)"
+      />
+    </draggable>
     <footer class="settings__footer">
       <label class="settings__footer-field" for="new-location">
         <span>Add location:</span>
@@ -21,7 +38,7 @@
         class="settings__footer-add"
         src="../assets/add.svg"
         alt="Add"
-        @click="emitAdd"
+        @click="triggerAdd"
       />
     </footer>
   </section>
@@ -29,21 +46,21 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+
+import draggable from 'vuedraggable';
+
+import { useSettingsToggler } from '@/composables/useSettingsToggler';
+import { useWeathers } from '@/composables/useWeathers';
+
 import SettingsItem from './SettingsItem.vue';
 
-defineProps<{
-  items: string[]
-}>()
-
-const emit = defineEmits<{
-  (e: 'add', location: string): void
-  (e: 'switch'): void
-}>();
+const settingsToggler = useSettingsToggler();
+const weathers = useWeathers();
 
 const newLocation = ref('');
 
-function emitAdd() {
-  emit('add', newLocation.value);
+function triggerAdd() {
+  weathers.add(newLocation.value);
 
   newLocation.value = '';
 }
@@ -63,6 +80,14 @@ function emitAdd() {
     }
   }
 
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+
+    margin: .5rem 0 1.5rem;
+  }
+
   &__footer {
     display: flex;
     justify-content: space-between;
@@ -79,13 +104,13 @@ function emitAdd() {
       font-weight: 700;
 
       input {
-        padding: .25rem;
+        padding: .3rem;
         font-size: 1rem;
 
         background: var(--background);
         color: var(--color);
 
-        border: 1px solid var(--primary);
+        border: 1px solid var(--color);
       }
     }
 

@@ -8,7 +8,7 @@
         src="../assets/close.svg"
         alt="Close"
         @click="settingsToggler.set(false)"
-      />
+      >
     </header>
     <draggable
       v-if="!weathers.isEmpty.value"
@@ -24,12 +24,6 @@
           @remove="weathers.remove(index)"
         />
       </template>
-      <SettingsItem 
-        v-for="(item, i) of weathers.state.value"
-        :key="item"
-        :item="item"
-        @remove="weathers.remove(i)"
-      />
     </draggable>
     <footer class="settings__footer">
       <label class="settings__footer-field" for="new-location">
@@ -41,7 +35,7 @@
         src="../assets/add.svg"
         alt="Add"
         @click="triggerAdd"
-      />
+      >
     </footer>
   </section>
 </template>

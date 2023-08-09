@@ -1,13 +1,13 @@
 <template>
   <div class="setting">
     <div class="setting-replace__icon">
-      <img src="../assets/burger.svg" alt="Replace" />
+      <img src="../assets/burger.svg" alt="Replace">
     </div>
     <span class="setting-name">
       {{ item }}
     </span>
     <div class="setting-delete__icon" @click="$emit('remove')">
-      <img src="../assets/remove.svg" alt="Remove" />
+      <img src="../assets/remove.svg" alt="Remove">
     </div>
   </div>
 </template>

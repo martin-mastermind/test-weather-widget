@@ -41,8 +41,11 @@ weather-widget {
   color: var(--color);
 }
 
+h2, h4 {
+  margin: 0;
+}
+
 h2 {
   font-size: 1.25rem;
-  margin: 0;
 }
 </style>

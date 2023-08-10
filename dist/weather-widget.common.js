@@ -19776,7 +19776,7 @@ function useWeatherCache(location) {
       weather.value = cachedWeather.data;
       return;
     }
-    const weatherRequest = `${API_URL}?q=${location}&appid=${"b59e75d822f79cbdabd3269d6ab1e3d3"}&units=${UNITS}`;
+    const weatherRequest = `${API_URL}?q=${location}&appid=${"ENTER API HERE"}&units=${UNITS}`;
     try {
       const response = await fetch(weatherRequest);
       const json = await response.json();

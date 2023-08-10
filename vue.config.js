@@ -7,5 +7,19 @@ module.exports = defineConfig({
     plugins: [
       new Dotenv({ systemvars: true })
     ]
+  },
+  chainWebpack: (config) => {
+    config
+      .plugin("copy")
+      .use(require.resolve("copy-webpack-plugin"), [
+        {
+          patterns: [
+            {
+              from: 'public',
+              to: 'public'
+            }
+          ]
+        }
+      ]);
   }
 });

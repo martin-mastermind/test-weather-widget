@@ -7,5 +7,21 @@
     node.appendChild(link);
   }
 
-  createStyleLink(document.head, './weather-widget.css');
+  function createScriptLink(node, url) {
+    const script = document.createElement('script');
+    script.src = url;
+    node.appendChild(script);
+  }
+
+  createStyleLink(document.head, 'https://self-test-weather.vercel.app/weather-widget.css');
+  createScriptLink(document.body, 'https://self-test-weather.vercel.app/weather-widget.umd.js');
+
+  const t = setInterval(() => {
+    const shadowRoot = document.querySelector('weather-widget').shadowRoot;
+
+    if (shadowRoot) {
+      createStyleLink(shadowRoot, 'https://self-test-weather.vercel.app/weather-widget.css');
+      clearInterval(t);
+    }
+  });
 })()

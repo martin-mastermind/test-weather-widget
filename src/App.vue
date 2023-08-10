@@ -38,10 +38,11 @@ settingsToggler.set(weathers.isEmpty.value)
 }
 
 weather-widget {
-  --background: #0A0A0A;
+  --background: #030123;
   --color: #E4E4E4;
   --color-hover: #727272;
-  --primary: #171717;
+  --primary: #000046;
+  --icon-background: #85B1FF;
 
   display: block;
 
@@ -53,6 +54,11 @@ weather-widget {
 
   width: 20rem;
   max-width: 320px;
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
 }
 
 .weather__widget {

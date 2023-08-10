@@ -16,6 +16,7 @@
       tag="article"
       class="settings__body"
       handle=".setting-replace__icon"
+      :item-key="(item: string) => item"
     >
       <template #item="{ element: item, index }">
         <SettingsItem 

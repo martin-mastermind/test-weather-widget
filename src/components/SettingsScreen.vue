@@ -64,7 +64,7 @@ function triggerAdd() {
 
 <style lang="scss" scoped>
 .settings {
-  padding: .5rem;
+  padding: 1rem;
 
   display: flex;
   flex-direction: column;
@@ -110,6 +110,8 @@ function triggerAdd() {
 
         background: var(--background);
         color: var(--color);
+
+        font-family: 'Ubuntu', sans-serif;
 
         border: 1px solid var(--color);
       }
